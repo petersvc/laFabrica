@@ -1,11 +1,11 @@
 import Link from 'next/link';
 
 import Stripe from 'stripe';
-import stripeConfig from '../../stripeConfig';
+// import stripeConfig from '../../stripeConfig';
 import CheckoutButton from '../components/CheckoutButtom';
 
 export async function getStaticPaths() {
-  const stripe = new Stripe(stripeConfig.secretKey, {
+  const stripe = new Stripe(process.env.secretKey, {
     apiVersion: '2020-08-27',
   });
 
@@ -24,7 +24,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const stripe = new Stripe(stripeConfig.secretKey, {
+  const stripe = new Stripe(process.env.secretKey, {
     apiVersion: '2020-08-27',
   });
 
@@ -34,7 +34,6 @@ export async function getStaticProps({ params }) {
 
   const { data } = await stripe.prices.list();
   const priceRaw = data.filter((price) => price.product === product.id);
-  // const price2 = priceRaw[0];
 
   return {
     props: {

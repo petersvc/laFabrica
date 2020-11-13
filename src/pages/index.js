@@ -1,10 +1,13 @@
 import Link from 'next/link';
 import Stripe from 'stripe';
+// import dotenv from 'dotenv';
 
-import stripeConfig from '../../stripeConfig';
+// import stripeConfig from '../../stripeConfig';
+
+// dotenv.config();
 
 export const getStaticProps = async () => {
-  const stripe = new Stripe(stripeConfig.secretKey, {
+  const stripe = new Stripe(process.env.secretKey, {
     apiVersion: '2020-08-27',
   });
 
