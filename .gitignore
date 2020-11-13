@@ -6,6 +6,7 @@
 /.pnp
 .pnp.js
 stripeConfig.js
+next.config.js
 
 # testing
 /coverage
