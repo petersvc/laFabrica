@@ -1,11 +1,10 @@
 import Link from 'next/link';
 
 import Stripe from 'stripe';
-// import stripeConfig from '../../stripeConfig';
 import CheckoutButton from '../components/CheckoutButtom';
 
 export async function getStaticPaths() {
-  const stripe = new Stripe(process.env.secretKey, {
+  const stripe = new Stripe(process.env.SECRET_KEY, {
     apiVersion: '2020-08-27',
   });
 
@@ -24,7 +23,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const stripe = new Stripe(process.env.secretKey, {
+  const stripe = new Stripe(process.env.SECRET_KEY, {
     apiVersion: '2020-08-27',
   });
 
