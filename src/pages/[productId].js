@@ -4,7 +4,7 @@ import Stripe from 'stripe';
 import CheckoutButton from '../components/CheckoutButtom';
 
 export async function getStaticPaths() {
-  const stripe = new Stripe(process.env.SECRET_KEY, {
+  const stripe = new Stripe(`${process.env.SECRET_KEY}`, {
     apiVersion: '2020-08-27',
   });
 
@@ -23,7 +23,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const stripe = new Stripe(process.env.SECRET_KEY, {
+  const stripe = new Stripe(`${process.env.SECRET_KEY}`, {
     apiVersion: '2020-08-27',
   });
 
@@ -74,7 +74,7 @@ function Product({ product, price }) {
         />
       )}
       <h1>R$ {Number(priceValue / 100).toFixed(2)}</h1>
-      <br /> <br />
+      <br />
       <CheckoutButton productName={product.id} priceId={price.id} />
       <br /> <br />
       <Link href="/">voltar</Link>

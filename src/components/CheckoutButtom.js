@@ -1,8 +1,6 @@
 import { loadStripe } from '@stripe/stripe-js';
 
-// import stripeConfig from '../../stripeConfig';
-
-const stripePromise = loadStripe(process.env.PUBLIC_KEY);
+const stripePromise = loadStripe(`${process.env.PUBLIC_KEY}`);
 
 function CheckoutButton({ productName, priceId }) {
   const handleClick = async () => {
